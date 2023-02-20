@@ -1,3 +1,35 @@
+# Python interface for the Ckmeans.1d.dp package
+
+The R package [Ckmeans.1d.dp](https://cran.r-project.org/web/packages/Ckmeans.1d.dp/index.html) by Song, Zhong, and Wang provides a C++ implementation of a few dynamic programming algorithms related to optimal kmeans in one dimension. Here we provide a Python interface to that library.
+
+## Installation
+
+Once this is complete, you will be able to install either by 
+```
+pip install ckmeans_1d_dp
+```
+or by
+```
+conda install ckmeans_1d_dp
+```
+
+## Usage
+
+(still have not decided on the interface)
+
+## Related
+
+- [llimllib/ckmeans](https://github.com/llimllib/ckmeans) implements the main ckmeans algorithm directly in Python. This may be more appropriate if speed is not an issue and you wish to limit dependencies.
+- [rocketrip/ckmeans](https://github.com/rocketrip/ckmeans) also wraps the original C++ implementation. It is based on an older release of the package so it is missing the latest improvements. The interface it provides is not vectorized, which I expect will make it slow when doing many repeated clusterings. Also, it uses Cython, which I would prefer to avoid.
+- [AldenMB/NTarp](https://github.com/AldenMB/NTarp) includes a function to solve the same problem in the specific case of `k=2`, using purely vectorized Numpy.
+
+The purpose of this repository is to make it easy to use the latest version of ckmeans directly, using vectorized numpy code.
+
+
+# Original Readme
+
+Below is the Readme for the original R package.
+
 ---
 title: The 'Ckmeans.1d.dp' R package
 # bibliography: inst/REFERENCES.bib
