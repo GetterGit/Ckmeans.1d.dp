@@ -98,7 +98,7 @@ def ckmeans(x, k=(1, 9), y=1, method='linear', estimate_k='BIC', dissimilarity='
     k_shape = (*shape[:-1], k_max)
     bic_shape = (*shape[:-1], k_max-k_min+1)
     
-    cluster = np.zeros_like(x, dtype='int32')-1
+    cluster = np.zeros_like(x, dtype='int32')
     centers = np.zeros(k_shape, dtype=float)
     withinss = np.zeros(k_shape, dtype=float)
     size = np.zeros(k_shape, dtype=float)
