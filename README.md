@@ -15,7 +15,27 @@ conda install ckmeans_1d_dp
 
 ## Usage
 
-(still have not decided on the interface)
+There is only one function available:
+```
+from ckmeans_1d_dp import ckmeans
+```
+
+The docstring describes all the options in detail.
+```
+help(ckmeans)
+```
+
+A major advantage of this implementation is that it can broadcast over x, saving memory, and potentially saving a lot of time. This broadcasts along the last axis, treating each row independently.
+```
+>>> x = np.sqrt(np.linspace(0, 2, 80)).reshape(2, 2, 20)
+>>> ckmeans(z, k=2).cluster
+array([[[0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]],
+      dtype=int32)
+```
 
 ## Related
 
