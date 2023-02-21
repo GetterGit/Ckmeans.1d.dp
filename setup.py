@@ -17,12 +17,6 @@ ext_modules = [
             "src/fill_SMAWK.cpp",
             "src/select_levels.cpp",
             "src/weighted_select_levels.cpp",
-            "src/Ckmeans.1d.dp.h",
-            "src/EWL2_within_cluster.h",
-            "src/EWL2.h",
-            "src/precision.h",
-            "src/within_cluster.h",
-            
         ],
     ),
 ]
