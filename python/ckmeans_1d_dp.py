@@ -91,31 +91,30 @@ def ckmeans(x, k=(1, 9), y=1, method='linear', estimate_k='BIC', dissimilarity='
     else:
         k_min, k_max = k
     
-    x = np.as_array(x)
-    y = np.as_array(y)
+    x = np.asarray(x)
+    y = np.asarray(y)
     shape = x.shape
     
     k_shape = (*shape[:-1], k_max)
     bic_shape = (*shape[:-1], k_max-k_min+1)
     
-    cluster = np.zeros_like(x, dtype=int)
+    cluster = np.zeros_like(x, dtype='int32')-1
     centers = np.zeros(k_shape, dtype=float)
     withinss = np.zeros(k_shape, dtype=float)
     size = np.zeros(k_shape, dtype=float)
     BIC = np.zeros(bic_shape, dtype=float)
     
-    criterion = getattr(_ckmeans_1d_dp, dissimilarity)
     _ckmeans_1d_dp.ckmeans(
-        x, y, min_k, max_k,
+        x, y, k_min, k_max,
         cluster, centers, withinss, size, BIC,
-        extimate_k, method, criterion
+        estimate_k, method, dissimilarity
     )
     
     k_opt = 1+cluster.max(axis=-1)
     
-    if len(y) == len(x) && y.any() && criterion != 'L2Y':
+    if y.size == x.size and y.any() and dissimilarity != 'L2Y':
         totss = np.average((x-np.average(x, weights=y, axis=-1))**2, weights=y, axis=-1)
-    elif criterion == 'L2Y':
+    elif dissimilarity == 'L2Y':
         totss = y.var(axis=-1)
     else:
         totss = x.var(axis=-1)

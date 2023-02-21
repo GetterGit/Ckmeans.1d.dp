@@ -10,9 +10,21 @@
 #include <string>
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
-#include "../src/Ckmeans.1d.dp.h"
+#include "Ckmeans.1d.dp.h"
 
 namespace py = pybind11;
+
+enum DISSIMILARITY parse(const std::string & dissimilarity){
+    if (dissimilarity == "L2"){
+        return L2;
+    } else if (dissimilarity == "L1"){
+        return L1;
+    } else if (dissimilarity == "L2Y"){
+        return L2Y;
+    } else {
+        throw std::runtime_error("not a valid dissimilarity!");
+    }
+}
 
 
 void Ckmeans_1d_dp(py::array_t<double, py::array::c_style | py::array::forcecast> x,
@@ -24,8 +36,9 @@ void Ckmeans_1d_dp(py::array_t<double, py::array::c_style | py::array::forcecast
                    py::array_t<double> withinss,
                    py::array_t<double> size,
                    py::array_t<double> BICs,
-                   const std::string & estimate_k, const std::string & method,
-                   enum DISSIMILARITY criterion)
+                   const std::string & estimate_k,
+                   const std::string & method,
+                   const std::string & dissimilarity)
 {
     py::buffer_info bufx = x.request(), bufy = y.request();
     
@@ -41,14 +54,15 @@ void Ckmeans_1d_dp(py::array_t<double, py::array::c_style | py::array::forcecast
     if(bufy.size != bufx.size) { yp = 0; }
     
     size_t length =  x.shape(x.ndim()-1);
+    enum DISSIMILARITY condition = parse(dissimilarity);
     
     for(size_t width = x.size()/length; width > 0; --width){
         kmeans_1d_dp(xp, length, yp, minK, maxK,
                    cluster_p, center_p, wp, sp, bp,
-                   estimate_k, method, criterion);
+                   estimate_k, method, condition);
         xp += length;
         yp = yp ? yp + length : 0;
-        cluster_p += maxK;
+        cluster_p += length;
         center_p += maxK;
         wp += maxK;
         sp += maxK;
@@ -61,8 +75,4 @@ PYBIND11_MODULE(_ckmeans_1d_dp, m){
     m.doc() = "Python binding for Ckmeans.1d.dp";
     
     m.def("ckmeans", &Ckmeans_1d_dp, "the Ckmeans.1d.dp function");
-    
-    m.attr("L1") = L1;
-    m.attr("L2") = L2;
-    m.attr("L2Y") = L2Y;
 }
