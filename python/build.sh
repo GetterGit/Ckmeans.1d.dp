@@ -1,2 +1,2 @@
 #! /bin/bash
-c++ -O3 -Wextra -shared -std=c++11 -fPIC $(python3 -m pybind11 --includes) _ckmeans_1d_dp.cpp -o _ckmeans_1d_dp$(python3-config --extension-suffix)
+c++ -O3 -Wall -shared -std=c++11 -fPIC -I "../src/" $(python3 -m pybind11 --includes) _ckmeans_1d_dp.cpp ../src/Ckmeans.1d.dp.cpp ../src/dynamic_prog.cpp ../src/EWL2_dynamic_prog.cpp ../src/EWL2_fill_log_linear.cpp ../src/EWL2_fill_quadratic.cpp ../src/EWL2_fill_SMAWK.cpp ../src/fill_log_linear.cpp ../src/fill_quadratic.cpp ../src/fill_SMAWK.cpp ../src/select_levels.cpp ../src/weighted_select_levels.cpp -o _ckmeans_1d_dp$(python3-config --extension-suffix)
