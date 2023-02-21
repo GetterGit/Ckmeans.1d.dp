@@ -1,0 +1,24 @@
+name: ckmeans_dev
+channels:
+  - conda-forge
+dependencies: 
+  - black
+  - build
+  - conda-libmamba-solver
+  - conda-tree
+  - cookiecutter
+  - cmake
+  - hypothesis
+  - ipykernel
+  - ipytest
+  - isort
+  - matplotlib
+  - pip
+  - progressbar2
+  - pybind11
+  - pyflakes
+  - pytest
+  - scikit-learn
+  - setuptools
+  - twine
+  - wheel
