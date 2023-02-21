@@ -10,7 +10,7 @@
 #include <string>
 #include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
-#include "Ckmeans.1d.dp.h"
+#include "../src/Ckmeans.1d.dp.h"
 
 namespace py = pybind11;
 
