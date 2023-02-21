@@ -4,13 +4,13 @@ The R package [Ckmeans.1d.dp](https://cran.r-project.org/web/packages/Ckmeans.1d
 
 ## Installation
 
-Once this is complete, you will be able to install either by 
+You can install this by
 ```
-pip install ckmeans_1d_dp
+pip install ckmeans-1d-dp
 ```
 or by
 ```
-conda install ckmeans_1d_dp
+conda install ckmeans-1d-dp
 ```
 
 ## Usage
@@ -49,11 +49,6 @@ The purpose of this repository is to make it easy to use the latest version of c
 # Original Readme
 
 Below is the Readme for the original R package.
-
----
-title: The 'Ckmeans.1d.dp' R package
-# bibliography: inst/REFERENCES.bib
----
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/Ckmeans.1d.dp)](https://cran.r-project.org/package=Ckmeans.1d.dp)
