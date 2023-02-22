@@ -8,6 +8,7 @@ dependencies:
   - conda-tree
   - cookiecutter
   - cmake
+  - grayskull
   - hypothesis
   - ipykernel
   - ipytest
