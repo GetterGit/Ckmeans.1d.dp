@@ -115,9 +115,9 @@ def ckmeans(x, k=(1, 9), y=1, method='linear', estimate_k='BIC', dissimilarity='
     if y.size == x.size and y.any() and dissimilarity != 'L2Y':
         totss = np.average((x-np.average(x, weights=y, axis=-1))**2, weights=y, axis=-1)
     elif dissimilarity == 'L2Y':
-        totss = y.var(axis=-1)
+        totss = y.var(axis=-1)*y.shape[-1]
     else:
-        totss = x.var(axis=-1)
+        totss = x.var(axis=-1)*x.shape[-1]
     
     tot_withinss = withinss.sum(axis=-1) #possible error here
     betweenss = totss - tot_withinss
@@ -129,6 +129,6 @@ def ckmeans(x, k=(1, 9), y=1, method='linear', estimate_k='BIC', dissimilarity='
         size=size,
         totss=totss,
         tot_withinss=tot_withinss,
-        betweensss=betweenss,
+        betweenss=betweenss,
     )
     
