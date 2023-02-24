@@ -10,7 +10,7 @@ class CKMeansResult(NamedTuple):
     size: np.ndarray
     totss: float
     tot_withinss: float
-    betweensss: float
+    betweenss: float
 
 
 def ckmeans(x, k=(1, 9), y=1, method='linear', estimate_k='BIC', dissimilarity='L2'):
