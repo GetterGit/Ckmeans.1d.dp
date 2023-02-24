@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ckmeans_1d_dp"
-version = "4.3.4.post"
+version = "4.3.4.1"
 authors = [
     {name = "Alden Bradford"},
 ]
