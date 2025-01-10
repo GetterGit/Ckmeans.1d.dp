@@ -131,7 +131,7 @@ def ckmeans(x, k=(1, 9), y=1, method="linear", estimate_k="BIC", dissimilarity="
     k_opt = 1 + cluster.max(axis=-1)
     k_index = np.broadcast_to(np.arange(k_max), k_shape)
 
-    tot_withinss = np.where(k_index < k_opt[..., np.newaxis], [withinss, 0]).sum(
+    tot_withinss = np.where(k_index < k_opt[..., np.newaxis], withinss, 0).sum(
         axis=-1
     )
     betweenss = totss - tot_withinss
